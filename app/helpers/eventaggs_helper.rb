@@ -1,0 +1,2 @@
+module EventaggsHelper
+end

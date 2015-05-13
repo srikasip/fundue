@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  eventagg_id: 1
+  name_path: MyString
+
+two:
+  eventagg_id: 1
+  name_path: MyString

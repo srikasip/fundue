@@ -1,0 +1,44 @@
+<%= form_for @eventagg, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :site_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :site_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :pagination, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :pagination, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :domain, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :domain, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :eventpage, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :eventpage, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                eventaggs_path, :class => 'btn' %>
+  </div>
+<% end %>

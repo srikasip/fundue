@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  eventagg_id: 1
+  xpath: MyString
+  order: 1
+  tag: MyString
+
+two:
+  eventagg_id: 1
+  xpath: MyString
+  order: 1
+  tag: MyString

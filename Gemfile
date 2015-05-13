@@ -28,12 +28,10 @@ gem 'twitter-bootstrap-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-
 group :development do
   gem 'taps' #transfer data to and from databases in an agnostic fashion
   gem 'sqlite3', '1.3.8'
 end
-
 
 #required for heroku deployment
 group :production do

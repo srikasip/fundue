@@ -1,0 +1,31 @@
+<%- model_class = Eventagg -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @eventagg.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
+  <dd><%= @eventagg.link %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:site_type) %>:</strong></dt>
+  <dd><%= @eventagg.site_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pagination) %>:</strong></dt>
+  <dd><%= @eventagg.pagination %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:domain) %>:</strong></dt>
+  <dd><%= @eventagg.domain %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:eventpage) %>:</strong></dt>
+  <dd><%= @eventagg.eventpage %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              eventaggs_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_eventagg_path(@eventagg), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              eventagg_path(@eventagg),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
