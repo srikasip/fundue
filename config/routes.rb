@@ -1,8 +1,6 @@
 ScraperStore::Application.routes.draw do
-  get "greetings/home"
+  root "greetings#home"
   get "greetings/howto"
-  get "static_page/home"
-  get "static_page/howto"
   resources :eventaggs
 
   # The priority is based upon order of creation: first created -> highest priority.

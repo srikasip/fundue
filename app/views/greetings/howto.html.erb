@@ -1,2 +1,90 @@
-<h1>Greetings#howto</h1>
-<p>Find me in app/views/greetings/howto.html.erb</p>
+<h1>How To</h1>
+<p>
+  Super Simple! Basically, you're gonna find the site, and tell our system what the structure is.  
+  <br /><br />
+  Here are the components that are important with some explanation as to what they are.
+</p>
+
+<ul>
+  <li>
+    <span class="bold">Name </span><br />
+    <span class="definition">You can call this anything you want. It just has to be sensible. Its so that we can look at the name and know what the site is. No Spaces is preferred</span><br />
+    <span class="example">Example: ArtsNowRI_Events</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Link</span> <br />
+    <span class="definition">This is the actual URL of the events list.  Usually this isn't the home page, but some page buried in the site that lists all the events for a given region.</span><br />
+    <span class="example">Example: http://www.artsnowri.com/web_services/calendar/163/</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Site_Type</span> <br />
+    <span class="definition">There are two kinds of sites.  <br />
+    1. Sites that list events and all the details are right there in the list.<br />
+    2. Sites that list some details, but have an events details page, and you click on something to get to the page and get all the details right there.</span><br />
+    <span class="example">sample component example</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Pagination</span> <br />
+    <span class="definition">Usually sites don't load all the details in one go.  They have pages with like 25 items at a time or something.  This is the block that has the links to the other pages that follow the same pattern. <br/>
+    You want to get all the links to the pages.
+    </span><br />
+    <span class="example">Example: //p[@class='pagination']/a/@href</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Domain</span><br />
+    <span class="definition">This is the parent domain. its usually all the text from "http://www." up to the first slash</span><br />
+    <span class="example">Example: http://www.artsnowri.com</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Details Link</span> <br />
+    <span class="definition">If the site type is type 2, then this is the link to the event details page.</span><br />
+    <span class="example">Example: //td[@class='event_name']/a/@href</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Name</span><br />
+    <span class="definition">This is the XPath that goes to the event title on the event details page</span><br />
+    <span class="example">
+      Example: //td[@class='htmlwidtitle']/text()
+    </span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Location</span><br />
+    <span class="definition">This is the XPath to the location of the event.  You can actually have a list here. It doesn't have to be only one XPath.  Like, if the address is in one div, and the city and state are in another, you can put them both in there, and the system should know what to do.</span><br />
+    <span class="example">Example: //p[preceding::h3[@class='htmlwidvenue']]/a/strong/text()</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Date Time</span><br />
+    <span class="definition">On the Event Details Page, this is the XPath that goes to the date and time. THis can also handle more than 1 xpath, so you can put em back to back.</span><br />
+    <span class="example">Example: //p[preceding::h3[@class='htmlwidtimes']][1]/text()</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Description</span><br />
+    <span class="definition">This is the XPath to the descriptive text on the Event Details page.  Also can handle multiple Xpaths.</span><br />
+    <span class="example">Example: //*[@id='spotlight_right']/p[4]/text()</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Price</span><br />
+    <span class="definition">
+      XPath to the event price on the event details page. This can also handle multiple XPaths, but i can't imagine why you would need that.  You can just submit 1 and it'll be fine.
+    </span><br />
+    <span class="example">Example: //div[@id='event_info']/p[2]/text()</span>
+  </li>
+  <br />
+  <li>
+    <span class="bold">Event Image</span><br />
+    <span class="definition">
+      This is the XPath to the image source on the event details page!  keep in mind the @src, y0.
+    </span><br />
+    <span class="example">Example: //img[@class='event_image']/@src</span>
+  </li>
+</ul>
