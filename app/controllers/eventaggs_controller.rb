@@ -5,6 +5,7 @@ class EventaggsController < ApplicationController
   # GET /eventaggs.json
   def index
     @eventaggs = Eventagg.all
+
   end
 
   # GET /eventaggs/1

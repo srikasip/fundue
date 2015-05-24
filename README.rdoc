@@ -1,28 +1,40 @@
-== README
+/*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Author: Srikar K Prasad
 
-Things you may want to cover:
+//This is pretty straight forward.  Every event aggregator website houses data that tells python scraper how to navigate the site
 
-* Ruby version
+//1 event agg has many xstuffs
+//each xstuff has a label for each xpath type that our python script needs and an order, since each field can take multiple xpaths
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The kinds that we need are as follows:
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+  "name":"PVD_artsnowri",
+  "link":"http://www.artsnowri.com/web_services/calendar/163/",
+  "site_type":"2",
+  "pagination":"//p[@class='pagination']/a/@href",
+  "domain":"http://www.artsnowri.com",
+  "eventDetailsPageLink_xpath":"//td[@class='event_name']/a/@href",
+  "eventName_xpath":"//td[@class='htmlwidtitle']/text()",
+  "eventLocation_xpath":[
+    "//p[preceding::h3[@class='htmlwidvenue']]/a/strong/text()",
+    "//p[preceding::h3[@class='htmlwidvenue']][3]/text()[1]",
+    "//p[preceding::h3[@class='htmlwidvenue']][3]/text()[2]"
+    ],
+  "eventDateTime_xpath":"//p[preceding::h3[@class='htmlwidtimes']][1]/text()",
+  "eventDescription_xpath":"//*[@id='spotlight_right']/p[4]/text()",
+  "eventPrice_xpath":"//div[@id='event_info']/p[2]/text()",
+  "eventImage_xpath":"//img[@class='event_image']/@src"
+
+*/
+
+enum tag_type: [ 
+    :eventName_xpath,
+    :eventLocation_xpath,
+    :eventDateTime_xpath,
+    :eventDescription_xpath,
+    :eventPrice_xpath,
+    :eventImage_xpath
+  ]
