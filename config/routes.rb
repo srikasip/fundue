@@ -3,6 +3,8 @@ ScraperStore::Application.routes.draw do
   get "greetings/howto"
   resources :eventaggs
 
+  post 'eventaggs/sendParserData', :as => :sendParserData
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,8 +1,41 @@
 class EventaggsController < ApplicationController
   before_action :set_eventagg, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token, :only => [:sendParserData]
   # GET /eventaggs
   # GET /eventaggs.json
+
+  def sendParserData
+    allParsers = params[:parsers]
+    successCounter = 0
+    totalCounter = 0
+    for parser in allParsers
+      begin
+        sentAgg = Eventagg.new
+        sentAgg.is_json = parser["is_json"]
+        sentAgg.name = parser["name"]
+        sentAgg.link = parser["link"]
+        sentAgg.site_type = parser["site_type"]
+        sentAgg.domain = parser["domain"]
+        sentAgg.pagination_type = parser["pagination_type"]
+        sentAgg.eventpage = parser["eventDetailsPageLink_xpath"]
+        if sentAgg.save
+          successCounter += 1
+        end
+      rescue
+        #do nothing
+      ensure
+        totalCounter += 1
+      end
+    end
+
+    responseString = '{"total": "'+totalCounter.to_s+'", "saved":"'+successCounter.to_s+'"}'
+    respond_to do |format|
+      format.html { render :html => responseString }
+      format.json { render :json => responseString }
+    end
+
+  end
+
   def index
     @eventaggs = Eventagg.all
 
