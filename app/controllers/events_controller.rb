@@ -19,7 +19,7 @@ class EventsController < ApplicationController
         newevent.description = nil_or_string(event[:description])
         newevent.price = nil_or_string(event[:price])
         newevent.imagepath = nil_or_string(event[:imagePath])
-
+        newevent.source = nil_or_string(event[:source])
         newevent.location = nil_or_string(event[:location])
         newevent.datetime = nil_or_string(event[:datetime])
 

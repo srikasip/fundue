@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:num_sent) %></th>
       <th><%= model_class.human_attribute_name(:total_events) %></th>
       <th><%= model_class.human_attribute_name(:num_addresses) %></th>
       <th><%= model_class.human_attribute_name(:num_pdate) %></th>
@@ -19,12 +20,13 @@
     <% @statistics.each do |statistic| %>
       <tr>
         <td><%= link_to statistic.id, statistic_path(statistic) %></td>
+        <td><%= statistic.num_sent %></td>
         <td><%= statistic.total_events %></td>
         <td><%= statistic.num_addresses %></td>
         <td><%= statistic.num_pdate %></td>
         <td><%= statistic.num_ptime %></td>
         <td><%= statistic.num_price %></td>
-        <td><%=l statistic.created_at %></td>
+        <td><%= statistic.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_statistic_path(statistic), :class => 'btn btn-mini' %>

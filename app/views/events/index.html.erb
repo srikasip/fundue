@@ -6,16 +6,15 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:imagepath) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:location) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:datetime) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:imagepath) %></th>
       <th><%= model_class.human_attribute_name(:pdate) %></th>
       <th><%= model_class.human_attribute_name(:ptime) %></th>
-      <th><%= model_class.human_attribute_name(:dump) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:source) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,16 +22,19 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to event.id, event_path(event) %></td>
+        <td>
+          <%= image_tag(event.imagepath, size:"32", alt: "Event Image")%>
+        </td>
         <td><%= event.name %></td>
         <td><%= event.location %></td>
         <td><%= event.description %></td>
         <td><%= event.datetime %></td>
         <td><%= event.price %></td>
-        <td><%= event.imagepath %></td>
         <td><%= event.pdate %></td>
         <td><%= event.ptime %></td>
-        <td><%= event.dump %></td>
-        <td><%=l event.created_at %></td>
+        <td>
+          <%= link_to "Event Link", event.source %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_event_path(event), :class => 'btn btn-mini' %>
