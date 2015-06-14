@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  description: MyText
+  datetime: MyString
+  price: MyString
+  imagepath: MyString
+  pdate: MyString
+  ptime: MyString
+  dump: MyText
+
+two:
+  name: MyString
+  location: MyString
+  description: MyText
+  datetime: MyString
+  price: MyString
+  imagepath: MyString
+  pdate: MyString
+  ptime: MyString
+  dump: MyText

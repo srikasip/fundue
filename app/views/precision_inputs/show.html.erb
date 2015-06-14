@@ -1,0 +1,31 @@
+<%- model_class = PrecisionInput -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:session_id) %>:</strong></dt>
+  <dd><%= @precision_input.session_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:event_id) %>:</strong></dt>
+  <dd><%= @precision_input.event_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:field_name) %>:</strong></dt>
+  <dd><%= @precision_input.field_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:is_correct) %>:</strong></dt>
+  <dd><%= @precision_input.is_correct %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:how_wrong) %>:</strong></dt>
+  <dd><%= @precision_input.how_wrong %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:statistic_id) %>:</strong></dt>
+  <dd><%= @precision_input.statistic_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              precision_inputs_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_precision_input_path(@precision_input), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              precision_input_path(@precision_input),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

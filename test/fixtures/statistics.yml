@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_events: 1
+  num_addresses: 1
+  num_pdate: 1
+  num_ptime: 1
+  num_price: 1
+
+two:
+  total_events: 1
+  num_addresses: 1
+  num_pdate: 1
+  num_ptime: 1
+  num_price: 1

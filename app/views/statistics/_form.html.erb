@@ -1,0 +1,38 @@
+<%= form_for @statistic, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :total_events, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :total_events, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_addresses, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_addresses, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_pdate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_pdate, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_ptime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_ptime, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_price, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                statistics_path, :class => 'btn' %>
+  </div>
+<% end %>

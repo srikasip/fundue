@@ -1,4 +1,16 @@
 ScraperStore::Application.routes.draw do
+  resources :statistics
+
+  resources :precision_inputs
+
+  resources :addresses
+
+  resources :events
+  post 'events/jsonListener', :as => :allevents
+  post 'events/processedJsonListener', :as => :processedEvents
+
+
+
   root "greetings#home"
   get "greetings/howto"
   resources :eventaggs

@@ -1,0 +1,44 @@
+<%= form_for @precision_input, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :session_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :session_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :event_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :event_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :field_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :field_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_correct, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :is_correct, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :how_wrong, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :how_wrong, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :statistic_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :statistic_id, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                precision_inputs_path, :class => 'btn' %>
+  </div>
+<% end %>

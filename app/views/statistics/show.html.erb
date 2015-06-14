@@ -1,0 +1,29 @@
+<%- model_class = Statistic -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:total_events) %>:</strong></dt>
+  <dd><%= @statistic.total_events %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_addresses) %>:</strong></dt>
+  <dd><%= @statistic.num_addresses %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_pdate) %>:</strong></dt>
+  <dd><%= @statistic.num_pdate %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_ptime) %>:</strong></dt>
+  <dd><%= @statistic.num_ptime %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_price) %>:</strong></dt>
+  <dd><%= @statistic.num_price %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              statistics_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_statistic_path(@statistic), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              statistic_path(@statistic),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
