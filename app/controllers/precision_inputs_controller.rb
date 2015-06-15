@@ -3,6 +3,173 @@ class PrecisionInputsController < ApplicationController
 
   # GET /precision_inputs
   # GET /precision_inputs.json
+  def date_validation
+    #get a new session_id that is valid
+    pastValidHold = PrecisionInput.count(:all, :group => 'session_id')
+    if pastValidHold
+      if pastValidHold.count()>0
+        sessionID = pastValidHold.max[0] + 1
+      else
+        sessionID = 1
+      end
+    else
+      sessionID = 1
+    end
+    statID = Statistic.all.pluck(:id).max
+
+    #send a random sample of events and associated precision_inputs
+
+
+
+    @validateEvents = Event.all.sample(10)
+
+    @precInputs = []
+    @validateEvents.each do |event|
+      precinput = PrecisionInput.new
+      precinput.event_id = event.id
+      precinput.field_name = "pdate"
+      precinput.session_id = sessionID
+      precinput.statistic_id = statID
+      precinput.save
+      @precInputs << precinput
+    end
+  end
+
+  def time_validation
+    #get a new session_id that is valid
+    pastValidHold = PrecisionInput.count(:all, :group => 'session_id')
+    if pastValidHold
+      if pastValidHold.count()>0
+        sessionID = pastValidHold.max[0] + 1
+      else
+        sessionID = 1
+      end
+    else
+      sessionID = 1
+    end
+    statID = Statistic.all.pluck(:id).max
+
+    #send a random sample of events and associated precision_inputs
+
+
+
+    @validateEvents = Event.all.sample(10)
+
+    @precInputs = []
+    @validateEvents.each do |event|
+      precinput = PrecisionInput.new
+      precinput.event_id = event.id
+      precinput.field_name = "ptime"
+      precinput.session_id = sessionID
+      precinput.statistic_id = statID
+      precinput.save
+      @precInputs << precinput
+    end
+  end
+
+  def price_validation
+    #get a new session_id that is valid
+    pastValidHold = PrecisionInput.count(:all, :group => 'session_id')
+    if pastValidHold
+      if pastValidHold.count()>0
+        sessionID = pastValidHold.max[0] + 1
+      else
+        sessionID = 1
+      end
+    else
+      sessionID = 1
+    end
+    statID = Statistic.all.pluck(:id).max
+
+    #send a random sample of events and associated precision_inputs
+
+
+
+    @validateEvents = Event.all.sample(10)
+
+    @precInputs = []
+    @validateEvents.each do |event|
+      precinput = PrecisionInput.new
+      precinput.event_id = event.id
+      precinput.field_name = "price"
+      precinput.session_id = sessionID
+      precinput.statistic_id = statID
+      precinput.save
+      @precInputs << precinput
+    end
+  end
+
+
+  def address_validation
+    #get a new session_id that is valid
+    pastValidHold = PrecisionInput.count(:all, :group => 'session_id')
+    if pastValidHold
+      if pastValidHold.count()>0
+        sessionID = pastValidHold.max[0] + 1
+      else
+        sessionID = 1
+      end
+    else
+      sessionID = 1
+    end
+    statID = Statistic.all.pluck(:id).max
+
+    #send a random sample of events and associated precision_inputs
+
+
+
+    @validateEvents = Event.all.sample(10)
+
+    @precInputs = []
+    @validateEvents.each do |event|
+      precinput = PrecisionInput.new
+      precinput.event_id = event.id
+      precinput.field_name = "address"
+      precinput.session_id = sessionID
+      precinput.statistic_id = statID
+      precinput.save
+      @precInputs << precinput
+    end
+  end
+
+
+
+
+  def saveCorrect
+    @precision_input = PrecisionInput.find(params[:id])
+    @precision_input.is_correct = true
+
+    if @precision_input.save
+      responseString = '{"outcome":"saved"}'
+    else
+      responseString = '{"outcome":"error"}'
+    end
+
+    respond_to do |format|
+      format.html { render :html => responseString }
+      format.json { render :json => responseString }
+    end
+
+  end
+
+  def saveWrong
+    @precision_input = PrecisionInput.find(params[:id])
+    @precision_input.is_correct = false
+    @precision_input.how_wrong = params[:precError]
+
+    if @precision_input.save
+      responseString = '{"outcome":"saved"}'
+    else
+      responseString = '{"outcome":"error"}'
+    end
+
+    respond_to do |format|
+      format.html { render :html => responseString }
+      format.json { render :json => responseString }
+    end
+
+  end
+
   def index
     @precision_inputs = PrecisionInput.all
   end

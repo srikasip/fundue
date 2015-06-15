@@ -15,3 +15,49 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+function PrecisionInputCorrect(sent_id)
+{
+    boxName = "#PrecInContainer"+sent_id;
+    inputterName = "#UserInputter"+sent_id;
+    $(inputterName).addClass("hideUserInputter");
+
+
+    $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    url: "saveCorrect",
+    data: JSON.stringify({id:sent_id}),
+    dataType:"json",
+    success: function(result){
+      $(boxName).addClass("InputComplete");
+    },
+    error: function(){
+      $(boxName).addClass("InputError");
+    }
+  });
+}
+
+function PrecisionError(sent_id)
+{
+  queryString = "#PrecInError" + sent_id;
+  responseText = $(queryString).val();
+
+  boxName = "#PrecInContainer"+sent_id;
+  inputterName = "#UserInputter"+sent_id;
+  $(inputterName).addClass("hideUserInputter");
+
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    url: "saveWrong",
+    data: JSON.stringify({id:sent_id, precError:responseText}),
+    dataType:"json",
+    success: function(result){
+      $(boxName).addClass("InputWrong");
+    },
+    error: function(){
+      $(boxName).addClass("InputError");
+    }
+  });
+}

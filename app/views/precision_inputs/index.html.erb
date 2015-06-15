@@ -1,46 +1,14 @@
-<%- model_class = PrecisionInput -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:session_id) %></th>
-      <th><%= model_class.human_attribute_name(:event_id) %></th>
-      <th><%= model_class.human_attribute_name(:field_name) %></th>
-      <th><%= model_class.human_attribute_name(:is_correct) %></th>
-      <th><%= model_class.human_attribute_name(:how_wrong) %></th>
-      <th><%= model_class.human_attribute_name(:statistic_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @precision_inputs.each do |precision_input| %>
-      <tr>
-        <td><%= link_to precision_input.id, precision_input_path(precision_input) %></td>
-        <td><%= precision_input.session_id %></td>
-        <td><%= precision_input.event_id %></td>
-        <td><%= precision_input.field_name %></td>
-        <td><%= precision_input.is_correct %></td>
-        <td><%= precision_input.how_wrong %></td>
-        <td><%= precision_input.statistic_id %></td>
-        <td><%=l precision_input.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_precision_input_path(precision_input), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      precision_input_path(precision_input),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_precision_input_path,
-            :class => 'btn btn-primary' %>
+<ul>
+  <li>
+    <%= link_to "Check Dates", precision_inputs_date_validation_path %>
+  </li>
+  <li>
+    <%= link_to "Check Times", precision_inputs_time_validation_path %>
+  </li>
+  <li>
+    <%= link_to "Check Addresses", precision_inputs_address_validation_path %>
+  </li>
+  <li>
+    <%= link_to "Check Prices", precision_inputs_price_validation_path %>
+  </li>
+</ul>

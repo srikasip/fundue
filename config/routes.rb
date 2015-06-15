@@ -1,7 +1,13 @@
 ScraperStore::Application.routes.draw do
   resources :statistics
 
+  get "precision_inputs/date_validation", to: "precision_inputs#date_validation"
+  get "precision_inputs/time_validation", to: "precision_inputs#time_validation"
+  get "precision_inputs/price_validation", to: "precision_inputs#price_validation"
+  get "precision_inputs/address_validation", to: "precision_inputs#address_validation"
   resources :precision_inputs
+  post "precision_inputs/saveWrong", to: "precision_inputs#saveWrong"
+  post "precision_inputs/saveCorrect", to: "precision_inputs#saveCorrect"
 
   resources :addresses
 

@@ -1,0 +1,23 @@
+<h1>Price Validation</h1>
+
+<% @precInputs.each do |prec| %>
+  <% @event = (@validateEvents.select { |sevent| sevent.id == prec.event_id })[0] %>
+  <div class="container PrecisionInput" id="<%= 'PrecInContainer' + prec.id.to_s %>">
+    <h4><%= @event.name %></h4>
+    <strong>Price: </strong> 
+    <span class="precOutput"><%= @event.price %></span>
+    <br />
+    <strong>Event Link: </strong><%= link_to "Click to Navigate to Site", @event.source, target: "_blank" %>
+    <br /><br />
+    <div class="pull-right" id="<%= 'UserInputter' + prec.id.to_s %>">
+      <strong>Describe Error Here:</strong><br />
+      <textarea id="<%= 'PrecInError' + prec.id.to_s %>"></textarea><br />
+      <button class="btn btn-success" onclick="PrecisionInputCorrect('<%= prec.id %>')">
+        This is Right!
+      </button>
+      <button class="btn btn-warning" onclick="PrecisionError('<%= prec.id %>')">
+        This is Wrong!
+      </button>
+    </div>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614214001) do
+ActiveRecord::Schema.define(version: 20150615001844) do
 
   create_table "addresses", force: true do |t|
     t.integer  "event_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150614214001) do
     t.integer  "event_id"
     t.string   "field_name"
     t.boolean  "is_correct"
-    t.integer  "how_wrong"
+    t.text     "how_wrong"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "statistic_id"
