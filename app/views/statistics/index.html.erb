@@ -22,10 +22,34 @@
         <td><%= link_to statistic.id, statistic_path(statistic) %></td>
         <td><%= statistic.num_sent %></td>
         <td><%= statistic.total_events %></td>
-        <td><%= statistic.num_addresses %></td>
-        <td><%= statistic.num_pdate %></td>
-        <td><%= statistic.num_ptime %></td>
-        <td><%= statistic.num_price %></td>
+        <td>
+          <%= statistic.num_addresses %>
+          <% statistic.getPrecision('address').each do |prec| %>
+            <br />------<br />
+            <%= "Num Samples: #{prec['numSamples']}, Right: #{prec['numCorrect']}, Wrong: #{prec['numWrong']}, Percentage: #{prec['percWrong']*100}%" %>
+          <% end %>
+        </td>
+        <td>
+          <%= statistic.num_pdate %>
+          <% statistic.getPrecision('pdate').each do |prec| %>
+            <br />------<br />
+            <%= "Num Samples: #{prec['numSamples']}, Right: #{prec['numCorrect']}, Wrong: #{prec['numWrong']}, Percentage: #{prec['percWrong']*100}%" %>
+          <% end %>
+        </td>
+        <td>
+          <%= statistic.num_ptime %>
+          <% statistic.getPrecision('ptime').each do |prec| %>
+            <br />------<br />
+            <%= "Num Samples: #{prec['numSamples']}, Right: #{prec['numCorrect']}, Wrong: #{prec['numWrong']}, Percentage: #{prec['percWrong']*100}%" %>
+          <% end %>
+        </td>
+        <td>
+          <%= statistic.num_price %>
+          <% statistic.getPrecision('price').each do |prec| %>
+            <br />------<br />
+            <%= "Num Samples: #{prec['numSamples']}, Right: #{prec['numCorrect']}, Wrong: #{prec['numWrong']}, Percentage: #{prec['percWrong']*100}%" %>
+          <% end %>
+        </td>
         <td><%= statistic.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
