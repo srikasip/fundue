@@ -6,7 +6,7 @@ class Statistic < ActiveRecord::Base
                           avg(case when p.is_correct='t' then 1 else 0 end) as percWrong, 
                           p.session_id as session_id
                         FROM precision_inputs as p 
-                        WHERE p.statistic_id = #{self.id} and p.field_name = \"#{fname}\" and (p.is_correct is not NULL)
+                        WHERE p.statistic_id=#{self.id} and p.field_name=\"#{fname}\" and (p.is_correct is not NULL)
                         Group By p.session_id"""
 
 
