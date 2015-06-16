@@ -66,7 +66,8 @@ function CleanPrecisionInput()
   $.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
-    url: "cleanOut",
+    url: "precision_inputs/cleanOut",
+    data: JSON.stringify({status:"do it"}),
     dataType:"json",
     success: function(result){
       alert("Cleaned Out!!");

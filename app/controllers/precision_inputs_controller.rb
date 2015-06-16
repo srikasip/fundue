@@ -141,7 +141,6 @@ class PrecisionInputsController < ApplicationController
     end
   end
 
-
   def saveCorrect
     @precision_input = PrecisionInput.find(params[:id])
     @precision_input.is_correct = true
