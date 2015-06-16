@@ -3,7 +3,7 @@ class Statistic < ActiveRecord::Base
     selectStatement = """SELECT count(p.id) as numSamples,
                           sum(case when p.is_correct='t' then 1 else 0 end) as numCorrect, 
                           sum(case when p.is_correct='f' then 1 else 0 end) as numWrong, 
-                          avg(p.is_correct='t') as percWrong, 
+                          avg(case when p.is_correct='t' then 1 else 0 end) as percWrong, 
                           p.session_id as session_id
                         FROM precision_inputs as p 
                         WHERE p.statistic_id = #{self.id} and p.field_name = \"#{fname}\" and (p.is_correct is not NULL)
