@@ -22,7 +22,6 @@ function PrecisionInputCorrect(sent_id)
     inputterName = "#UserInputter"+sent_id;
     $(inputterName).addClass("hideUserInputter");
 
-
     $.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
@@ -60,4 +59,20 @@ function PrecisionError(sent_id)
       $(boxName).addClass("InputError");
     }
   });
+}
+
+function CleanPrecisionInput()
+{
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    url: "cleanOut",
+    dataType:"json",
+    success: function(result){
+      alert("Cleaned Out!!");
+    },
+    error: function(){
+      
+    }
+  }); 
 }

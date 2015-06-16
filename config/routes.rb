@@ -8,6 +8,7 @@ ScraperStore::Application.routes.draw do
   resources :precision_inputs
   post "precision_inputs/saveWrong", to: "precision_inputs#saveWrong"
   post "precision_inputs/saveCorrect", to: "precision_inputs#saveCorrect"
+  post "precision_inputs/cleanOut", to: "precision_inputs#cleanOut"
 
   resources :addresses
 

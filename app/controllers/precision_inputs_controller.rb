@@ -132,7 +132,14 @@ class PrecisionInputsController < ApplicationController
     end
   end
 
-
+  def cleanOut
+    PrecisionInput.delete_all('is_correct is NULL')
+    responseString = '{"outcome":"done"}'
+    respond_to do |format|
+      format.html { render :html => responseString }
+      format.json { render :json => responseString }
+    end
+  end
 
 
   def saveCorrect
