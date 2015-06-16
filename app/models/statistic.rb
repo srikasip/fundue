@@ -10,7 +10,7 @@ class Statistic < ActiveRecord::Base
                         Group By p.session_id"""
 
 
-    precInputs = PrecisionInput.find_by_sql(selectStatement).delete_if {|item| (item.nil? or item["numSamples"]<10)}
+    precInputs = PrecisionInput.find_by_sql(selectStatement).delete_if {|item| (item['numSamples'].nil? or item["numSamples"]<10)}
 
     if precInputs
       return precInputs
