@@ -12,10 +12,10 @@ class Statistic < ActiveRecord::Base
 
     precInputs = PrecisionInput.find_by_sql(selectStatement).delete_if {|item| item["numSamples"]<10}
 
-    if precInputs == nil
-      return []
-    else
+    if precInputs
       return precInputs
+    else
+      return []
     end
   end
 
