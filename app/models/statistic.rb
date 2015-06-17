@@ -9,7 +9,7 @@ class Statistic < ActiveRecord::Base
                         WHERE p.statistic_id=#{self.id} and p.field_name='#{fname}' and (p.is_correct is not NULL)
                         Group By p.session_id"""
 
-
+    precInputs = PrecisionInput.select("count(p.id) as numSamples", )
     precInputs = PrecisionInput.find_by_sql(selectStatement).delete_if {|item| (item['numSamples'].nil? or item["numSamples"]<10)}
 
     if precInputs
@@ -20,6 +20,3 @@ class Statistic < ActiveRecord::Base
   end
 
 end
-
-
-

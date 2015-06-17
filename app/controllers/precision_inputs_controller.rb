@@ -115,9 +115,6 @@ class PrecisionInputsController < ApplicationController
     statID = Statistic.all.pluck(:id).max
 
     #send a random sample of events and associated precision_inputs
-
-
-
     @validateEvents = Event.all.sample(10)
 
     @precInputs = []
