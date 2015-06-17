@@ -21,7 +21,7 @@ class EventsController < ApplicationController
         newevent.source = nil_or_string(event[:source])
         newevent.location = nil_or_string(event[:location])
         newevent.datetime = nil_or_string(event[:datetime])
-        newevent.dump = nil_or_string(event[:dump])
+        #newevent.dump = nil_or_string(event[:dump])
 
         newevent.price = flatten(event[:pPrice])
         newevent.ptime = flatten(event[:time])
