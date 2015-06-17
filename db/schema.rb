@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615001844) do
+ActiveRecord::Schema.define(version: 20150617030117) do
 
   create_table "addresses", force: true do |t|
     t.integer  "event_id"
@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 20150615001844) do
     t.string   "location"
     t.text     "description"
     t.string   "datetime"
-    t.string   "price"
+    t.text     "price",       limit: 255
     t.string   "imagepath"
-    t.string   "pdate"
-    t.string   "ptime"
+    t.text     "pdate",       limit: 255
+    t.text     "ptime",       limit: 255
     t.text     "dump"
     t.datetime "created_at"
     t.datetime "updated_at"
