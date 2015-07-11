@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     saveCounter = 0
     Event.delete_all
     Address.delete_all
+    EventDateTime.delete_all
 
      for event in allEvents
       begin
@@ -21,6 +22,7 @@ class EventsController < ApplicationController
         newevent.source = nil_or_string(event[:source])
         newevent.location = nil_or_string(event[:location])
         newevent.datetime = nil_or_string(event[:datetime])
+
         #newevent.dump = nil_or_string(event[:dump])
 
         newevent.price = flatten(event[:pPrice])
@@ -38,6 +40,31 @@ class EventsController < ApplicationController
               newaddy.region = nil_or_string(address[:region1])
 
               newaddy.save
+            end
+          end
+          if event[:datetime_structs] != nil and event[:datetime_structs].count > 0
+            for datetime in event[:datetime_structs]
+              eventDate = EventDateTime.new
+              eventDate.event_id = newevent.id
+              eventDate = setDateTime(eventDate, datetime[:date][:start_date][:full_date], datetime[:time][:start_time], nil_or_string(datetime[:time][:end_time]))
+              eventDate.save
+
+
+              if datetime[:date][:end_date] != nil and nil_or_string(datetime[:date][:end_date][:full_date]) != nil
+                startDate = DateTime.parse(datetime[:date][:start_date][:full_date])
+                endDate = DateTime.parse(datetime[:date][:end_date][:full_date])
+                endInt = endDate.to_time.to_i
+                currDate = startDate+1
+                currDateInt = currDate.to_time.to_i
+                while currDateInt <= endInt do
+                  eventDate = EventDateTime.new
+                  eventDate.event_id = newevent.id
+                  eventDate = setDateTime(eventDate, currDate, datetime[:time][:start_time], nil_or_string(datetime[:time][:end_time]))
+                  eventDate.save
+                  currDate = currDate + 1
+                  currDateInt = currDate.to_time.to_i
+                end
+              end
             end
           end
         end
@@ -211,6 +238,21 @@ class EventsController < ApplicationController
       else
         return nil
       end
+    end
+
+    def setDateTime(dtObj, writeDate, startTime, endTime)
+      dtString = writeDate+" " + startTime
+      dtObj.start = DateTime.parse(dtString)
+
+      if endTime != nil
+        dtString = writeDate+" " + endTime
+        dtObj.end = DateTime.parse(dtString)
+      else
+        dtString = writeDate+" 11:59:59 pm"
+        dtObj.end = DateTime.parse(dtString)
+      end
+      return dtObj
+
     end
 
 end

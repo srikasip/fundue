@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617030117) do
+ActiveRecord::Schema.define(version: 20150628172640) do
 
   create_table "addresses", force: true do |t|
     t.integer  "event_id"
     t.string   "full_address"
     t.string   "city"
     t.string   "region"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_date_times", force: true do |t|
+    t.integer  "event_id"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
