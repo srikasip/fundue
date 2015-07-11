@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     Address.delete_all
     EventDateTime.delete_all
 
-     for event in allEvents
+    for event in allEvents
       begin
         newevent = Event.new
         newevent.name = nil_or_string(event[:name])
